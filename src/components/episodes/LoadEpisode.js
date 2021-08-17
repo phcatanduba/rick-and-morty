@@ -10,7 +10,7 @@ export default function LoadEpisode({ episode }) {
                 <Info>Qtd de Personagens: {episode.characters.length}</Info>
                 <Info>Foi ao ar em: {episode.air_date}</Info>
                 <Link
-                    to={`/episode/:id`}
+                    to={`/episode/${episode.id}`}
                     style={{
                         color: 'white',
                         fontWeight: 'bold',

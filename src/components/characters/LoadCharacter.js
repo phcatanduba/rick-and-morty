@@ -14,7 +14,7 @@ export default function LoadCharacter({ character }) {
                 <Info>Nome: {character.name}</Info>
                 <Info>Origem: {character.origin.name}</Info>
                 <Link
-                    to={`/character/:id`}
+                    to={`/character/${character.id}`}
                     style={{
                         color: 'white',
                         fontWeight: 'bold',
