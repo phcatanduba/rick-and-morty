@@ -1,10 +1,13 @@
 import styled from 'styled-components';
 import SearchBar from './SearchBar';
+import { Link } from 'styled-components';
 
 export default function Header() {
     return (
         <div>
-            <Title>Rick and Morty</Title>
+            <Link to="/">
+                <Title>Rick and Morty</Title>
+            </Link>
             <SearchBar />
         </div>
     );
