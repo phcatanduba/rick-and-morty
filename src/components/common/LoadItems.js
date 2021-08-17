@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Link from 'react-router-dom';
 
 export default function LoadItems({ characters, episodes, input, show }) {
     return (
@@ -7,14 +8,18 @@ export default function LoadItems({ characters, episodes, input, show }) {
                 return item.name.toLowerCase().includes(input) &&
                     input !== '' &&
                     show === true ? (
-                    <Searchs key={item.id}>Personagem: {item.name}</Searchs>
+                    <Link to={`/character/${item.id}`}>
+                        <Searchs key={item.id}>Personagem: {item.name}</Searchs>
+                    </Link>
                 ) : null;
             })}
             {episodes.map((item) => {
                 return item.name.toLowerCase().includes(input) &&
                     input !== '' &&
                     show === true ? (
-                    <Searchs key={item.id}>Episódio: {item.name}</Searchs>
+                    <Link to={`/episode/${item.id}`}>
+                        <Searchs key={item.id}>Episódio: {item.name}</Searchs>
+                    </Link>
                 ) : null;
             })}
         </Container>
