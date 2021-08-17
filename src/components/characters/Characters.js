@@ -1,27 +1,40 @@
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { Carousel } from 'react-responsive-carousel';
+import styled from 'styled-components';
+
+import LoadCharacter from './LoadCharacter';
 import axios from 'axios';
 
-import { useEffect, useState } from 'react';
+export default function Characters({ characters, setCharacters }) {
+    function getMoreCharacters(index) {
+        const page = index / 10;
+        if (index % 20 === 0) {
+            const promise = axios.get(
+                `https://rickandmortyapi.com/api/character/?page=${page}`
+            );
+            promise.then((response) => {
+                setCharacters([...characters, ...response.data.results]);
+            });
+        }
+    }
 
-import Character from './Character';
-
-export default function Characters() {
-    const [characters, setCharacters] = useState([]);
-
-    useEffect(() => {
-        const promise = axios.get('https://rickandmortyapi.com/api/character');
-        promise.then((response) => {
-            setCharacters(response.data.results);
-        });
-    }, []);
-
-    return characters ? (
-        <>
-            <p style={{ fontWeight: 'bold', fontSize: '30px', color: 'white' }}>
-                Personagens:{' '}
-            </p>
-            <Character characters={characters} />
-        </>
-    ) : (
-        <p>Loading...</p>
+    return (
+        <Container>
+            <Carousel
+                showThumbs={false}
+                onChange={(index) => getMoreCharacters(index + 1)}
+                renderIndicator={false}
+            >
+                {characters.map((character) => {
+                    return <LoadCharacter character={character} />;
+                })}
+            </Carousel>
+        </Container>
     );
 }
+
+const Container = styled.div`
+    width: 100%;
+    margin-top: 40px;
+    border-bottom: 1px solid white;
+`;
