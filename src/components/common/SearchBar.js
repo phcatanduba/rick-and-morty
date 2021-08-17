@@ -3,25 +3,17 @@ import styled from 'styled-components';
 
 import CharactersContext from '../../contexts/CharactersContext';
 import EpisodesContext from '../../contexts/EpisodesContext';
+import LoadItems from './LoadItems';
 
 export default function SearchBar() {
     const [input, setInput] = useState('');
     const [show, setShow] = useState(false);
-    const [charactersAndEpisodes, setCharactersAndEpisodes] = useState([]);
 
     const { characters } = useContext(CharactersContext);
     const { episodes } = useContext(EpisodesContext);
 
-    useEffect(() => {
-        setCharactersAndEpisodes([...characters, ...episodes]);
-    }, [characters, episodes]);
-
     return (
-        <Area
-            onClick={() => {
-                setShow(false);
-            }}
-        >
+        <Container>
             <Input
                 placeholder={'Digite o nome do personagem ou do episódio'}
                 onChange={(e) => {
@@ -29,20 +21,36 @@ export default function SearchBar() {
                     setShow(true);
                 }}
             ></Input>
-            {charactersAndEpisodes.map((item) => {
-                return item.name.toLowerCase().includes(input) &&
-                    input !== '' &&
-                    show === true ? (
-                    <Searchs key={item.id}>{item.name}</Searchs>
-                ) : null;
-            })}
-        </Area>
+            <Area
+                style={show === false ? { display: 'none' } : null}
+                onClick={() => {
+                    setShow(false);
+                }}
+            >
+                <LoadItems
+                    characters={characters}
+                    episodes={episodes}
+                    show={show}
+                    input={input}
+                />
+            </Area>
+        </Container>
     );
 }
 
+const Container = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+`;
+
 const Area = styled.span`
-    position: fixed;
-    width: 100vw;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -57,26 +65,5 @@ const Input = styled.input`
     margin-top: 20px;
     border-radius: 15px;
     font-size: 20px;
-    &::placeholder {
-        font-size: 20px;
-        padding-left: 10px;
-    }
-`;
-
-const Searchs = styled.div`
-    top: 0;
-    left: 0;
-    width: 80%;
-    background-color: rgba(255, 255, 255, 0.7);
-    height: 30px;
-    border: 1px solid black;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 15px;
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.7);
-        color: white;
-    }
+    padding-left: 10px;
 `;

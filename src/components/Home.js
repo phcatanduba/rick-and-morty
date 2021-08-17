@@ -2,14 +2,14 @@ import styled from 'styled-components';
 
 import Header from './common/Header';
 import CharactersContainer from './characters/CharactersContainer';
-import Episodes from './episodes/Episodes';
+import EpisodesContainer from './episodes/EpisodesContainer';
 
 export default function Home() {
     return (
         <Container>
             <Header />
             <CharactersContainer />
-            <Episodes />
+            <EpisodesContainer />
         </Container>
     );
 }

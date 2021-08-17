@@ -16,7 +16,7 @@ export default function Characters() {
     }, [setCharacters]);
 
     return characters ? (
-        <div style={{ marginTop: '100px' }}>
+        <div style={{ marginTop: '50px' }}>
             <p style={{ fontWeight: 'bold', fontSize: '30px', color: 'white' }}>
                 Personagens:{' '}
             </p>
