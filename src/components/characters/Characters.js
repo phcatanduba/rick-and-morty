@@ -26,7 +26,12 @@ export default function Characters({ characters, setCharacters }) {
                 renderIndicator={false}
             >
                 {characters.map((character) => {
-                    return <LoadCharacter character={character} />;
+                    return (
+                        <LoadCharacter
+                            character={character}
+                            key={character.id}
+                        />
+                    );
                 })}
             </Carousel>
         </Container>

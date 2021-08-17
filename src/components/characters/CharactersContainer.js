@@ -1,26 +1,27 @@
 import axios from 'axios';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useContext } from 'react';
+import CharactersContext from '../../contexts/CharactersContext';
 
 import Character from './Characters';
 
 export default function Characters() {
-    const [characters, setCharacters] = useState([]);
+    const { characters, setCharacters } = useContext(CharactersContext);
 
     useEffect(() => {
         const promise = axios.get('https://rickandmortyapi.com/api/character');
         promise.then((response) => {
             setCharacters(response.data.results);
         });
-    }, []);
+    }, [setCharacters]);
 
     return characters ? (
-        <>
+        <div style={{ marginTop: '100px' }}>
             <p style={{ fontWeight: 'bold', fontSize: '30px', color: 'white' }}>
                 Personagens:{' '}
             </p>
             <Character characters={characters} setCharacters={setCharacters} />
-        </>
+        </div>
     ) : (
         <p>Loading...</p>
     );
