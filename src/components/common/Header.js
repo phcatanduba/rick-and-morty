@@ -1,7 +1,13 @@
 import styled from 'styled-components';
+import SearchBar from './SearchBar';
 
 export default function Header() {
-    return <Title>Rick and Morty</Title>;
+    return (
+        <div>
+            <Title>Rick and Morty</Title>
+            <SearchBar />
+        </div>
+    );
 }
 
 const Title = styled.h1`
