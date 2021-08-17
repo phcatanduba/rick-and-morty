@@ -1,10 +1,15 @@
 import styled from 'styled-components';
+
 import Header from './common/Header';
+import Characters from './characters/Characters';
+import Episodes from './episodes/Episodes';
 
 export default function Home() {
     return (
         <Container>
             <Header />
+            <Characters />
+            <Episodes />
         </Container>
     );
 }
