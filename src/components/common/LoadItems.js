@@ -8,8 +8,8 @@ export default function LoadItems({ characters, episodes, input, show }) {
                 return item.name.toLowerCase().includes(input) &&
                     input !== '' &&
                     show === true ? (
-                    <Link to={`/character/${item.id}`}>
-                        <Searchs key={item.id}>Personagem: {item.name}</Searchs>
+                    <Link to={`/character/${item.id}`} key={item.id}>
+                        <Searchs>Personagem: {item.name}</Searchs>
                     </Link>
                 ) : null;
             })}
@@ -17,8 +17,8 @@ export default function LoadItems({ characters, episodes, input, show }) {
                 return item.name.toLowerCase().includes(input) &&
                     input !== '' &&
                     show === true ? (
-                    <Link to={`/episode/${item.id}`}>
-                        <Searchs key={item.id}>Episódio: {item.name}</Searchs>
+                    <Link to={`/episode/${item.id}`} key={item.id}>
+                        <Searchs>Episódio: {item.name}</Searchs>
                     </Link>
                 ) : null;
             })}
@@ -30,12 +30,13 @@ const Container = styled.div`
     width: 70%;
     max-height: 400px;
     overflow-y: auto;
+    overflow-x: hidden;
 `;
 
 const Searchs = styled.div`
     top: 0;
     left: 0;
-    width: 80%;
+    width: 100%;
     background-color: rgba(255, 255, 255, 0.7);
     height: 30px;
     border: 1px solid black;
