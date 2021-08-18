@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function Characters({ characters, setCharacters }) {
     function getMoreCharacters(index) {
         const page = index / 10;
-        if (index % 20 === 0) {
+        if (index % 20 === 0 && setCharacters) {
             const promise = axios.get(
                 `https://rickandmortyapi.com/api/character/?page=${page}`
             );
