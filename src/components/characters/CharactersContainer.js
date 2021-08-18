@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useEffect, useContext } from 'react';
 import CharactersContext from '../../contexts/CharactersContext';
 
-import Character from './Characters';
+import Characters from './Characters';
 
 export default function CharactersContainer() {
     const { characters, setCharacters } = useContext(CharactersContext);
@@ -20,7 +20,7 @@ export default function CharactersContainer() {
             <p style={{ fontWeight: 'bold', fontSize: '30px', color: 'white' }}>
                 Personagens:{' '}
             </p>
-            <Character characters={characters} setCharacters={setCharacters} />
+            <Characters characters={characters} setCharacters={setCharacters} />
         </div>
     ) : (
         <p>Loading...</p>

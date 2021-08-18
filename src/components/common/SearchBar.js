@@ -13,20 +13,21 @@ export default function SearchBar() {
     const { episodes } = useContext(EpisodesContext);
 
     return (
-        <Container>
+        <Container
+            onClick={() => {
+                setInput('');
+                setShow(false);
+            }}
+        >
             <Input
                 placeholder={'Digite o nome do personagem ou do episódio'}
+                value={input}
                 onChange={(e) => {
                     setInput(e.target.value.toLowerCase());
                     setShow(true);
                 }}
             ></Input>
-            <Area
-                style={show === false ? { display: 'none' } : null}
-                onClick={() => {
-                    setShow(false);
-                }}
-            >
+            <Area style={show === false ? { display: 'none' } : null}>
                 <LoadItems
                     characters={characters}
                     episodes={episodes}
@@ -40,18 +41,18 @@ export default function SearchBar() {
 
 const Container = styled.div`
     width: 100%;
+    height: 90%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: relative;
-`;
-
-const Area = styled.span`
     position: absolute;
     top: 60px;
     left: 0;
+`;
+
+const Area = styled.span`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;

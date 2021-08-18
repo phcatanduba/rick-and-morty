@@ -38,13 +38,13 @@ const Info = styled.div`
 
 const Box = styled.div`
     width: 320px;
-    height: 320px;
+    height: 240px;
     border-radius: 20px;
     background-color: rgb(65, 65, 65);
 `;
 
 const Item = styled.div`
-    height: 320px;
+    height: 240px;
     display: flex;
     align-items: center;
     justify-content: center;
