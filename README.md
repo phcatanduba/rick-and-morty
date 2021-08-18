@@ -1,4 +1,4 @@
-# Getting Started 
+# Rick and Morty 
 
 ## Teste a demo
 
