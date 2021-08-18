@@ -52,6 +52,7 @@ export default function CharacterById({ characters }) {
                     <Info>Local de origem: {character.origin.name}</Info>
                 </div>
             </Box>
+            <p>Episódios do personagem: </p>
             <Episodes episodes={episodes} />
         </Container>
     ) : (
@@ -63,6 +64,11 @@ const Container = styled.main`
     height: 100%;
     min-height: 100vh;
     background-color: #212121;
+    p {
+        margin: 10px;
+        font-size: 25px;
+        color: white;
+    }
 `;
 
 const Box = styled.div`
