@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import LoadEpisode from './LoadEpisode';
 import axios from 'axios';
 
-export default function Characters({ episodes, setEpisodes }) {
+export default function Episodes({ episodes, setEpisodes }) {
     function getMoreEpisodes(index) {
         const page = index / 10;
         if (index % 20 === 0) {

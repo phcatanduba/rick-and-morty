@@ -5,7 +5,7 @@ import CharactersContext from '../../contexts/CharactersContext';
 
 import Character from './Characters';
 
-export default function Characters() {
+export default function CharactersContainer() {
     const { characters, setCharacters } = useContext(CharactersContext);
 
     useEffect(() => {

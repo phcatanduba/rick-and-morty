@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import Info from '../common/Info';
+
 export default function LoadCharacter({ character }) {
     return (
         <Item key={character.id}>
@@ -27,18 +29,6 @@ export default function LoadCharacter({ character }) {
         </Item>
     );
 }
-
-const Info = styled.div`
-    width: 80%;
-    height: 40px;
-    border-radius: 10px;
-    color: white;
-    margin: 10px auto;
-    background-color: rgb(0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-`;
 
 const Box = styled.div`
     width: 320px;

@@ -5,7 +5,7 @@ import EpisodesContext from '../../contexts/EpisodesContext';
 
 import Episodes from './Episodes';
 
-export default function Characters() {
+export default function EpisodesContainer() {
     const { episodes, setEpisodes } = useContext(EpisodesContext);
 
     useEffect(() => {
