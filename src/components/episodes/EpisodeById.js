@@ -1,46 +1,25 @@
 import Header from '../common/Header';
 import Info from '../common/Info';
 import Characters from '../characters/Characters';
+import { findEpisode, getIdsAndCallGetCharacters } from './utilsEpisodes';
 
 import styled from 'styled-components';
-import axios from 'axios';
 
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-export default function EpisodeById({ episodes }) {
+export default function EpisodeById() {
     const [characters, setCharacters] = useState([]);
     const [episode, setEpisode] = useState({});
     const { id } = useParams();
 
-    function findEpisode() {
-        const result = episodes.find((episode) => {
-            return episode.id === +id;
-        });
-        setEpisode(result);
-    }
-
-    function getCharacters(ids) {
-        if (ids) {
-            const promise = axios.get(
-                `https://rickandmortyapi.com/api/character/${ids}`
-            );
-            promise.then((response) => {
-                setCharacters(response.data);
-            });
-        }
-    }
+    useEffect(() => {
+        findEpisode(setEpisode, id);
+    }, [id]);
 
     useEffect(() => {
-        findEpisode();
-
-        let ids = '';
-        episode.characters?.forEach((url) => {
-            const index = url.indexOf('character/');
-            ids += url.substring(index + 10, url.length) + ',';
-        });
-        getCharacters(ids);
-    }, [episode, id]);
+        getIdsAndCallGetCharacters(episode, setCharacters);
+    }, [episode]);
 
     return 'characters' in episode ? (
         <Container>
@@ -57,7 +36,7 @@ export default function EpisodeById({ episodes }) {
             <Characters characters={characters} />
         </Container>
     ) : (
-        <p>Loading...</p>
+        <Container>Loading...</Container>
     );
 }
 const Container = styled.main`

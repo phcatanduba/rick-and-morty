@@ -24,7 +24,7 @@ export default function App() {
                             <CharacterById characters={characters} />
                         </Route>
                         <Route path="/episode/:id">
-                            <EpisodeById episodes={episodes} />
+                            <EpisodeById />
                         </Route>
                     </Switch>
                 </Router>
