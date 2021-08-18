@@ -8,7 +8,7 @@ import axios from 'axios';
 export default function Episodes({ episodes, setEpisodes }) {
     function getMoreEpisodes(index) {
         const page = index / 10;
-        if (index % 20 === 0) {
+        if (index % 20 === 0 && setEpisodes) {
             const promise = axios.get(
                 `https://rickandmortyapi.com/api/episode/?page=${page}`
             );
