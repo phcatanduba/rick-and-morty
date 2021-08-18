@@ -40,7 +40,7 @@ export default function CharacterById({ characters }) {
             ids += url.substring(index + 8, url.length) + ',';
         });
         getEpisodes(ids);
-    }, [character]);
+    }, [character, id]);
 
     return 'image' in character ? (
         <Container>
